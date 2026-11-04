@@ -282,5 +282,61 @@ h1 {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+
+    /* Logo and profile heading */
+
+.profile-heading {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 25px;
+}
+
+.lab-logo {
+    width: 105px;
+    height: auto;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.profile-identity .eyebrow {
+    margin-bottom: 8px;
+}
+
+.profile-identity .affiliation {
+    margin-bottom: 0;
+}
+
+/* Refined portrait appearance */
+
+.profile-image img {
+    padding: 6px;
+    border: 1px solid #e5e9ed;
+    box-shadow: 0 3px 12px rgba(0, 38, 87, 0.08);
+    border-radius: 3px;
+}
+
+/* Tighter research paragraph spacing */
+
+.research-description {
+    line-height: 1.7;
+}
+
+.research-description p {
+    margin-bottom: 12px;
+}
+
+@media (max-width: 550px) {
+    .profile-heading {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .lab-logo {
+        width: 75px;
+    }
+
+    .profile-identity h1 {
+        font-size: 27px;
     }
 }
