@@ -1,3 +1,4 @@
+
 /* =========================================
    ADVANCED COMBUSTION LABORATORY
    University of Florida
@@ -105,6 +106,30 @@ a:focus-visible {
     align-items: start;
 }
 
+/* Logo and profile heading */
+
+.profile-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.lab-logo {
+    display: block;
+    width: 105px;
+    height: auto;
+    flex: 0 0 105px;
+    object-fit: contain;
+}
+
+.profile-identity {
+    flex: 1;
+    min-width: 0;
+}
+
 .eyebrow {
     color: #647b91;
     font-size: 13px;
@@ -131,16 +156,18 @@ h1 {
     color: #647b91;
     font-size: 16px;
     line-height: 1.6;
-    margin: 0 0 32px;
+    margin: 0;
 }
+
+/* Research description */
 
 .research-description {
     font-size: 16px;
-    line-height: 1.8;
+    line-height: 1.7;
 }
 
 .research-description p {
-    margin: 0 0 17px;
+    margin: 0 0 12px;
 }
 
 /* Portrait */
@@ -155,7 +182,6 @@ h1 {
     display: block;
     width: 100%;
     height: auto;
-    object-fit: contain;
     padding: 6px;
     border: 1px solid #e5e9ed;
     box-shadow: 0 3px 12px rgba(0, 38, 87, 0.08);
@@ -266,6 +292,20 @@ h1 {
         gap: 12px 15px;
     }
 
+    .profile-heading {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .lab-logo {
+        width: 75px;
+        flex-basis: 75px;
+    }
+
+    .profile-identity h1 {
+        font-size: 27px;
+    }
+
     h1 {
         font-size: 31px;
     }
@@ -274,6 +314,7 @@ h1 {
 /* Respect reduced-motion preferences */
 
 @media (prefers-reduced-motion: reduce) {
+
     html {
         scroll-behavior: auto;
     }
@@ -284,61 +325,5 @@ h1 {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-
-    /* Logo and profile heading */
-
-.profile-heading {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    margin-bottom: 25px;
-}
-
-.lab-logo {
-    width: 105px;
-    height: auto;
-    flex-shrink: 0;
-    object-fit: contain;
-}
-
-.profile-identity .eyebrow {
-    margin-bottom: 8px;
-}
-
-.profile-identity .affiliation {
-    margin-bottom: 0;
-}
-
-/* Refined portrait appearance */
-
-.profile-image img {
-    padding: 6px;
-    border: 1px solid #e5e9ed;
-    box-shadow: 0 3px 12px rgba(0, 38, 87, 0.08);
-    border-radius: 3px;
-}
-
-/* Tighter research paragraph spacing */
-
-.research-description {
-    line-height: 1.7;
-}
-
-.research-description p {
-    margin-bottom: 12px;
-}
-
-@media (max-width: 550px) {
-    .profile-heading {
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    .lab-logo {
-        width: 75px;
-    }
-
-    .profile-identity h1 {
-        font-size: 27px;
     }
 }
