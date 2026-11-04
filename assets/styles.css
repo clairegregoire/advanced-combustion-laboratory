@@ -292,19 +292,29 @@ h1 {
         gap: 12px 15px;
     }
 
-    .profile-heading {
-        align-items: flex-start;
-        gap: 15px;
-    }
+.profile-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+    width: 100%;
+}
 
-    .lab-logo {
-        width: 75px;
-        flex-basis: 75px;
-    }
+.logo-container {
+    flex: 0 0 105px;
+    width: 105px;
+}
 
-    .profile-identity h1 {
-        font-size: 27px;
-    }
+.lab-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.profile-identity {
+    flex: 1;
+    min-width: 0;
+}
 
     h1 {
         font-size: 31px;
