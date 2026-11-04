@@ -1,1 +1,286 @@
-/* Styles for the Advanced Combustion Laboratory website */
+/* =========================================
+   ADVANCED COMBUSTION LABORATORY
+   University of Florida
+   ========================================= */
+
+/* General settings */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #263746;
+    background-color: #ffffff;
+    line-height: 1.7;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Accessibility */
+
+.skip-link {
+    position: absolute;
+    top: -50px;
+    left: 10px;
+    background: #ffffff;
+    color: #002657;
+    padding: 10px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+a:focus-visible {
+    outline: 3px solid #e6a23c;
+    outline-offset: 4px;
+}
+
+/* Header and navigation */
+
+.site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e9ed;
+}
+
+.header-content {
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.site-name {
+    color: #002657;
+    font-size: 19px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation a {
+    color: #263746;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.navigation a:hover,
+.navigation a[aria-current="page"] {
+    color: #002657;
+    font-weight: 700;
+}
+
+/* Homepage content */
+
+.home-section {
+    padding: 85px 0 75px;
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 1.65fr 0.75fr;
+    gap: 65px;
+    align-items: start;
+}
+
+.eyebrow {
+    color: #647b91;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+}
+
+h1 {
+    color: #002657;
+    font-size: 43px;
+    line-height: 1.2;
+    margin: 0 0 10px;
+}
+
+.position {
+    color: #263746;
+    font-size: 20px;
+    margin: 0 0 5px;
+}
+
+.affiliation {
+    color: #647b91;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+}
+
+.research-description {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.research-description p {
+    margin: 0 0 17px;
+}
+
+/* Portrait */
+
+.profile-image {
+    width: 100%;
+    max-width: 300px;
+    justify-self: end;
+}
+
+.profile-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+/* Homepage buttons */
+
+.home-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 45px;
+    max-width: 850px;
+}
+
+.primary-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 12px 20px;
+    background-color: #002657;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.primary-button:hover {
+    background-color: #164477;
+}
+
+/* Footer */
+
+.site-footer {
+    background-color: #f3f5f7;
+    border-top: 1px solid #e5e9ed;
+    padding: 30px 0;
+    color: #647b91;
+    font-size: 14px;
+}
+
+.site-footer p {
+    margin: 5px 0;
+}
+
+.site-footer strong {
+    color: #002657;
+}
+
+.footer-note {
+    margin-top: 20px !important;
+    font-size: 12px;
+}
+
+/* Responsive design */
+
+@media (max-width: 800px) {
+
+    .header-content {
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 0;
+    }
+
+    .navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 20px;
+    }
+
+    .profile-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .profile-image {
+        max-width: 240px;
+        justify-self: start;
+    }
+
+    .home-section {
+        padding: 55px 0;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .home-buttons {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .site-name {
+        text-align: center;
+    }
+
+    .navigation {
+        gap: 12px 15px;
+    }
+
+    h1 {
+        font-size: 31px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
