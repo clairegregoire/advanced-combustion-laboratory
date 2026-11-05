@@ -123,8 +123,8 @@ a:focus-visible {
 }
 
 .logo-container {
-    flex: 0 0 120px;
-    width: 120px;
+    flex: 0 0 130px;
+    width: 130px;
 }
 
 .lab-logo {
@@ -155,7 +155,7 @@ h1 {
     color: #647b91;
     font-size: 16px;
     line-height: 1.6;
-    margin: 0 0 12px;
+    margin: 0 0 28px;
 }
 
 /* Research description */
@@ -163,10 +163,11 @@ h1 {
 .research-description {
     font-size: 16px;
     line-height: 1.65;
+    margin-top: 0;
 }
 
 .research-description p {
-    margin: 0 0 5px;
+    margin: 0 0 6px;
 }
 
 /* Portrait */
