@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teaching</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .teaching-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .course-box {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 25px;
+      background-color: #f8f9fa;
+      text-align: center;
+    }
+
+    .course-box h2 {
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .course-box p {
+      margin-bottom: 20px;
+    }
+
+    .syllabus-link {
+      display: inline-block;
+      padding: 9px 20px;
+      background-color: #003366;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .syllabus-link:hover {
+      background-color: #00509e;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="teaching-container">
+
+    <p>Select a course below to view its syllabus.</p>
+
+    <div class="course-grid">
+
+      <div class="course-box">
+        <h2>EML4930 / EML5131: Combustion</h2>
+        <p>Spring 2027</p>
+        <a class="syllabus-link"
+           href="assets/combustion_spring_2027.pdf"
+           target="_blank"
+           rel="noopener noreferrer">
+          View Syllabus (PDF)
+        </a>
+      </div>
+
+      <div class="course-box">
+        <h2>EAS4132 / EML5714: Compressive Flow</h2>
+        <p>Spring 2026</p>
+        <a class="syllabus-link"
+           href="assets/compressible_flow_spring_2026.pdf"
+           target="_blank"
+           rel="noopener noreferrer">
+          View Syllabus (PDF)
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+</body>
+</html>
