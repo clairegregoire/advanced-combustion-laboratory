@@ -1,116 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaching | Advanced Combustion Laboratory</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="assets/styles.css">
+<title>Teaching | Advanced Combustion Laboratory</title>
 
-    <style>
-        .teaching-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 55px 35px;
-        }
+<link rel="stylesheet" href="assets/styles.css">
 
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-top: 25px;
-        }
+<style>
 
-        .course-box {
-            border: 1px solid #d9e0e7;
-            border-radius: 4px;
-            padding: 30px 25px;
-            background-color: #f5f7f9;
-            text-align: center;
-        }
+/* Teaching page */
 
-        .course-box h2 {
-            color: #002d56;
-            font-size: 20px;
-            margin: 0 0 10px;
-        }
+.teaching-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 65px 35px 55px;
+}
 
-        .course-box p {
-            color: #536779;
-            margin: 0 0 22px;
-        }
+.teaching-section h1 {
+    color: #002d56;
+    font-size: 38px;
+    line-height: 1.2;
+    margin: 0 0 25px;
+}
 
-        .syllabus-link {
-            display: inline-block;
-            background-color: #002d56;
-            color: #ffffff;
-            padding: 10px 22px;
-            border-radius: 3px;
-            text-decoration: none;
-            font-weight: 600;
-        }
+.teaching-introduction {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #34495a;
+    margin: 0 0 25px;
+}
 
-        .syllabus-link:hover {
-            background-color: #28649b;
-            color: #ffffff;
-        }
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 25px;
+}
 
-        @media (max-width: 700px) {
-            .course-grid {
-                grid-template-columns: 1fr;
-            }
+.course-box {
+    border: 1px solid #d9e0e7;
+    border-radius: 3px;
+    padding: 30px 25px;
+    background-color: #f5f7f9;
+    text-align: center;
+}
 
-            .teaching-section {
-                padding: 40px 25px;
-            }
-        }
-    </style>
+.course-box h2 {
+    color: #002d56;
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 0 0 10px;
+}
+
+.course-box p {
+    color: #536779;
+    margin: 0 0 22px;
+    font-size: 16px;
+}
+
+.syllabus-link {
+    display: inline-block;
+    background-color: #002d56;
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.syllabus-link:hover {
+    background-color: #28649b;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 38, 87, 0.15);
+}
+
+.syllabus-link:focus-visible {
+    outline: 3px solid #e6a23c;
+    outline-offset: 3px;
+}
+
+/* Responsive layout */
+
+@media (max-width: 900px) {
+
+    .teaching-section h1 {
+        font-size: 32px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .teaching-section {
+        padding: 45px 25px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .teaching-section {
+        padding: 35px 20px;
+    }
+
+    .teaching-section h1 {
+        font-size: 28px;
+    }
+
+    .course-box {
+        padding: 25px 18px;
+    }
+
+    .course-box h2 {
+        font-size: 19px;
+    }
+
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .syllabus-link {
+        transition-duration: 0.01ms;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <main>
-        <section class="teaching-section">
+<!-- Header: identical to homepage -->
 
-            <p>Select a course below to view its syllabus.</p>
+<header class="site-header">
 
-            <div class="course-grid">
+    <div class="header-container">
 
-                <div class="course-box">
-                    <h2>EML4930 / EML5131: Combustion</h2>
-                    <p>Spring 2027</p>
+        <a class="site-title" href="index.html">
+            Advanced Combustion Laboratory
+        </a>
 
-                    <a class="syllabus-link"
-                       href="assets/combustion_spring_2027.pdf"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        View Syllabus (PDF)
-                    </a>
-                </div>
+        <nav class="main-navigation">
 
-                <div class="course-box">
-                    <h2>EAS4132 / EML5714: Compressive Flow</h2>
-                    <p>Spring 2026</p>
+            <a href="index.html">Home</a>
 
-                    <a class="syllabus-link"
-                       href="assets/compressible_flow_spring_2026.pdf"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        View Syllabus (PDF)
-                    </a>
-                </div>
+            <a href="research.html">Research</a>
+
+            <a href="publications.html">Publications</a>
+
+            <a href="teaching.html" class="active">Teaching</a>
+
+            <a href="people.html">People</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- Teaching content -->
+
+<main>
+
+    <section class="teaching-section">
+
+        <h1>Teaching</h1>
+
+        <p class="teaching-introduction">
+            Select a course below to view its syllabus.
+        </p>
+
+        <div class="course-grid">
+
+            <!-- Combustion -->
+
+            <div class="course-box">
+
+                <h2>EML4930 / EML5131: Combustion</h2>
+
+                <p>Spring 2027</p>
+
+                <a class="syllabus-link"
+                   href="assets/combustion_spring_2027.pdf"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    View Syllabus (PDF)
+
+                </a>
 
             </div>
 
-        </section>
-    </main>
 
-    <footer class="site-footer">
-        <p>
-            Advanced Combustion Laboratory |
-            University of Florida
-        </p>
-    </footer>
+            <!-- Compressible Flow -->
+
+            <div class="course-box">
+
+                <h2>EAS4132 / EML5714: Compressive Flow</h2>
+
+                <p>Spring 2026</p>
+
+                <a class="syllabus-link"
+                   href="assets/compressible_flow_spring_2026.pdf"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    View Syllabus (PDF)
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- Footer: identical to homepage -->
+
+<footer class="site-footer">
+
+    <p>
+        Advanced Combustion Laboratory |
+        University of Florida
+    </p>
+
+</footer>
 
 </body>
 </html>
