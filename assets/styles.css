@@ -115,17 +115,15 @@ a:focus-visible {
 /* Logo and profile heading */
 
 .profile-heading {
-    position: relative;
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 22px;
     width: 100%;
-    padding-left: 142px;
-    padding-bottom: 28px;
 }
 
 .logo-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+    flex: 0 0 120px;
     width: 120px;
 }
 
@@ -136,6 +134,7 @@ a:focus-visible {
 }
 
 .profile-identity {
+    flex: 1;
     min-width: 0;
 }
 
@@ -156,22 +155,18 @@ h1 {
     color: #647b91;
     font-size: 16px;
     line-height: 1.6;
-    margin: 0;
+    margin: 0 0 12px;
 }
 
 /* Research description */
 
 .research-description {
     font-size: 16px;
-    line-height: 1.4;
-    margin: 0;
-    padding: 0;
+    line-height: 1.65;
 }
 
 .research-description p {
-    margin: 0;
-    padding: 0;
-    line-height: 1.4;
+    margin: 0 0 5px;
 }
 
 /* Portrait */
@@ -310,11 +305,12 @@ h1 {
     }
 
     .profile-heading {
-        padding-left: 90px;
-        padding-bottom: 28px;
+        align-items: flex-start;
+        gap: 15px;
     }
 
     .logo-container {
+        flex-basis: 75px;
         width: 75px;
     }
 
