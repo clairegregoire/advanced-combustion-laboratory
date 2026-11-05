@@ -127,11 +127,13 @@ a:focus-visible {
 .logo-container {
     flex: 0 0 105px;
     width: 105px;
+    max-width: 105px;
 }
 
 .lab-logo {
     display: block;
-    width: 100%;
+    width: 105px;
+    max-width: 100%;
     height: auto;
     object-fit: contain;
 }
