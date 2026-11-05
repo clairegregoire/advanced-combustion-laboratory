@@ -155,7 +155,7 @@ h1 {
     color: #647b91;
     font-size: 16px;
     line-height: 1.6;
-    margin: 0 0 32px;
+    margin: 0 0 22px;
 }
 
 /* Research description */
@@ -166,7 +166,7 @@ h1 {
 }
 
 .research-description p {
-    margin: 0 0 20px;
+    margin: 0 0 10px;
 }
 
 /* Portrait */
