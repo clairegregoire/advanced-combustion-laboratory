@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications | Advanced Combustion Laboratory</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.publications-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 45px 25px 70px;
+}
+
+.publication-section {
+    margin-bottom: 45px;
+}
+
+.publication-section h2 {
+    color: #17365d;
+    margin-bottom: 20px;
+}
+
+.publication-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.publication-entry {
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    line-height: 1.65;
+}
+
+.publication-entry:nth-child(n+6) {
+    display: none;
+}
+
+.publication-list.expanded .publication-entry {
+    display: list-item;
+}
+
+.publication-entry a {
+    color: #2463a6;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.publication-entry a:hover {
+    text-decoration: underline;
+}
+
+.entry-number {
+    font-weight: bold;
+}
+
+.read-toggle {
+    margin-top: 20px;
+    padding: 9px 22px;
+    background: #17365d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.read-toggle:hover {
+    background: #2463a6;
+}
+
+@media (max-width: 600px) {
+    .publications-page {
+        padding: 30px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="publications-page">
+
+<h1>Publications</h1>
+
+<section class="publication-section">
+<h2>Peer-Reviewed Journal Publications</h2>
+<ol class="publication-list" id="journal-list"></ol>
+<button class="read-toggle" data-list="journal-list"
+        aria-expanded="false">Read More</button>
+</section>
+
+<section class="publication-section">
+<h2>Conference Articles</h2>
+<ol class="publication-list" id="conference-list"></ol>
+<button class="read-toggle" data-list="conference-list"
+        aria-expanded="false">Read More</button>
+</section>
+
+</main>
+
+<script>
+const journal = [
+`40|C. Grégoire, P. Diévart, K. Kanayama, K. Maruta, H. Nakamura, E.L. Petersen, O. Mathieu. Pyrolysis Kinetics of Bis(2,2,2-trifluoroethyl) Methyl Phosphonate: Experiments and Modeling. Proceedings of the Combustion Institute 42 (2026) 106606. DOI: 10.1016/j.proci.2026.106606.`,
+`39|K. Kanayama, C. Grégoire, T. Tezuka, R. Matsumoto, K. Maruta, E.L. Petersen, O. Mathieu, H. Nakamura. Pyrolysis study of trimethyl phosphate: Impact of unimolecular decomposition reactions. Proceedings of the Combustion Institute 42 (2026) 106405. DOI: 10.1016/j.proci.2026.106405.`,
+`38|C. Grégoire, E.L. Petersen. Chemical Kinetics of AP/HTPB Surrogate Mixtures. AIAA Journal 64 (2026) 6565-6571. DOI: 10.2514/1.J066736.`,
+`37|C. Grégoire, O. Clément, O. Mathieu, E.L. Petersen, M. Di Teodoro, S.N. Elliott, C. Cavallotti, Z. Serinyel, G. Dayma. An experimental and modeling study of the pyrolysis and oxidation of propan-1-ol using CO time-history measurements behind reflected shock waves. Combustion and Flame 289 (2026) 115033. DOI: 10.1016/j.combustflame.2026.115033.`,
+`36|C. Grégoire, O. Mathieu, E.L. Petersen. A Shock-Tube Study of the HCl + M → H + Cl + M (M = Ar) Rate Constant using HCl Laser Absorption near 3.3 μm. International Journal of Chemical Kinetics 0 (2026) 1-12. DOI: 10.1002/kin.70051.`,
+`35|S. Elliott, M. Di Teodoro, S. Vari, L.P. Maffei, Z. Serinyel, O. Clément, C. Grégoire, E.L. Petersen, O. Mathieu, G. Dayma, C. Cavallotti. A theoretical study of 1-propanol H-abstractions and successive reactivity. Proceedings of the Combustion Institute 41 (2025) 105928. DOI: 10.1016/j.proci.2025.105928.`,
+`34|C. Grégoire, E.L. Petersen. Shock-Tube and Modeling Study of Trichloromethane Pyrolysis and Trichloromethane/Methane Oxidation using a H35Cl Laser Absorption Diagnostic near 3.3 μm. Proceedings of the Combustion Institute 41 (2025) 105823. DOI: 10.1016/j.proci.2025.105823.`,
+`33|O. Mathieu, C. Grégoire, E.L. Petersen. Assessment of Detailed Kinetics Models for CO Formation in Ethylene Combustion via Time-Resolved Laser Absorption. Fuel 405 (2025) 136641. DOI: 10.1016/j.fuel.2025.136641.`,
+`32|J. Liu, J.T. Chen, M. Khan-Ghauri, J.E. Jacobs, C. Grégoire, O. Mathieu, E.L. Petersen, P.K. Senecal, C.W. Zhou, H.J. Curran. An experimental and kinetic modeling study of ethyl tert-butyl ether. Part I: High-temperature pyrolysis and oxidation chemistry. Combustion and Flame 281 (2025) 114394. DOI: 10.1016/j.combustflame.2025.114394.`,
+`31|A. Bhattacharya, M. Raza, S. Zhou, C. Grégoire, S. Agarwal, D. Zhu, R. Fernandes, B. Shu, O. Kaario, C.W. Zhou, O. Mathieu, E.L. Petersen, H.J. Curran. An experimental and chemical kinetic modelling study of toluene oxidation with nitrous oxide. Combustion and Flame 281 (2025) 114349. DOI: 10.1016/j.combustflame.2025.114349.`,
+`30|C. Grégoire, E.L. Petersen, O. Mathieu. Experimental and numerical study of the impact of pressure during the pyrolysis of diethyl carbonate and ethyl methyl carbonate. Batteries 11:8 (2025) 303. DOI: 10.3390/batteries11080303.`,
+`29|C. Grégoire, E.L. Petersen. Development of a HCl laser absorption diagnostic near 3.3 μm for shock-tube chemical kinetics studies. Applied Physics B 131 (2025) 97. DOI: 10.1007/s00340-025-08458-3.`,
+`28|M. Khan Ghauri, P. Diévart, C. Grégoire, K. Kanayama, Y. Almarzooq, S. Takahashi, T. Tezuka, H. Nakamura, L. Catoire, K. Maruta, E.L. Petersen, O. Mathieu. Bis(2,2,2-trifluoroethyl) Carbonate as a Fire Suppressant Candidate for Lithium-Ion Batteries. Energy & Fuels 39 (2025) 4893-4908. DOI: 10.1021/acs.energyfuels.4c05359.`,
+`27|C. Grégoire, O. Mathieu, J. Kalman, E.L. Petersen. Review and Assessment of the Ammonium Perchlorate Chemistry in AP/HTPB Composite Propellant Gas-Phase Chemical Kinetics Mechanisms. Progress in Energy and Combustion Science 106 (2025) 101195. DOI: 10.1016/j.pecs.2024.101195.`,
+`26|C. Grégoire, Y.M. Almarzooq, M. Khan-Ghauri, P. Diévart, L. Catoire, E.L. Petersen, O. Mathieu. Enhancing Lithium-Ion Battery Safety: Investigating the Flame-Retardant Efficacy of Bis(2,2,2-trifluoroethyl) Carbonate during Ethyl Methyl Carbonate Combustion. Proceedings of the Combustion Institute 40:1-4 (2024) 105559. DOI: 10.1016/j.proci.2024.105559.`,
+`25|O. Mathieu, C. Grégoire, E.L. Petersen. Shock-Tube Study of the Oxidation of Ammonia by N2O. Proceedings of the Combustion Institute 40:1-4 (2024) 105250. DOI: 10.1016/j.proci.2024.105250.`,
+`24|K. Kanayama, C. Grégoire, S.P. Cooper, Y. Almarzooq, E.L. Petersen, O. Mathieu, K. Maruta, H. Nakamura. Experimental and Chemical Kinetic Modeling Study of Ethylene Carbonate Oxidation: A Lithium-Ion Battery Electrolyte Surrogate Model. Combustion and Flame 262 (2024) 113333. DOI: 10.1016/j.combustflame.2024.113333.`,
+`23|M. Liu, M. Wang, C.J. Sung, K. Aljohani, A. Farooq, N. Lindblade, C. Grégoire, O. Mathieu, E.L. Petersen, J. Zhao, Z. Tao, H.J. Curran, C.W. Zhou. A Comprehensive Experimental and Kinetic Modeling Study of p-Cymene Oxidation. Combustion and Flame 262 (2024) 113337. DOI: 10.1016/j.combustflame.2024.113337.`,
+`22|C. Grégoire, Y.M. Almarzooq, E.L. Petersen, O. Mathieu. Experimental and Modeling Study of the Combustion of Ethyl Methyl Carbonate, a Battery Electrolyte. Combustion and Flame 260 (2024) 113225. DOI: 10.1016/j.combustflame.2023.113225.`,
+`21|C. Grégoire, O. Mathieu, E.L. Petersen. High-temperature line strengths with He- and Ar-broadening coefficients of the P(20) line in the 1 ← 0 band of carbon monoxide. Applied Physics B 129 (2023) 187. DOI: 10.1007/s00340-023-08132-6.`,
+`20|M.G. Sandberg, C. Grégoire, D.J. Mohr, O. Mathieu, E.L. Petersen. An Experimental and Detailed Kinetics Modeling Study of Norbornadiene in Hydrogen and Methane Mixtures: Ignition Delay Time and Spectroscopic CO Measurements. Energies 16 (2023) 72828. DOI: 10.3390/en16217278.`,
+`19|C. Grégoire, E.L. Petersen, O. Mathieu. Shock-tube CO measurements during the pyrolysis of ethylene carbonate. Combustion and Flame 257 (2023) 113019. DOI: 10.1016/j.combustflame.2023.113019.`,
+`18|S.P. Cooper, C. Grégoire, Y. Almarzooq, E.L. Petersen, O. Mathieu. Experimental Kinetics Study on Diethyl Carbonate Oxidation. Fuel 4 (2023) 243. DOI: 10.3390/fuels4020015.`,
+`17|O. Mathieu, P. Diévart, M.A. Turner, D.J. Mohr, C. Grégoire, S.A. Alturaifi, L. Catoire, E.L. Petersen. Experimental and Detailed Kinetics Modeling Study of the Fire Suppressant Properties of Di(2,2,2 trifluoroethyl) Carbonate. Proceedings of the Combustion Institute 39 (2023) 499. DOI: 10.1016/j.proci.2022.07.078.`,
+`16|C. Rudolph, C. Grégoire, S.P. Cooper, S.A. Alturaifi, O. Mathieu, E.L. Petersen, B. Atakan. Shock-Tube Study on High-Temperature CO Formation During Dry Methane Reforming. Proceedings of the Combustion Institute 39 (2023) 715. DOI: 10.1016/j.proci.2022.08.005.`,
+`15|C. Grégoire, S.P. Cooper, M. Khan-Ghauri, S.A. Alturaifi, E.L. Petersen, O. Mathieu. Pyrolysis study of dimethyl carbonate, diethyl carbonate, and ethyl methyl carbonate using shock-tube spectroscopic CO measurements and chemical kinetics investigation. Combustion and Flame 249 (2023) 112594. DOI: 10.1016/j.combustflame.2022.112594.`,
+`14|C. Rudolph, C. Grégoire, S.P. Cooper, S.A. Alturaifi, O. Mathieu, E.L. Petersen, B. Atakan. Spectroscopic Study of CO Formation from CO2-Enriched Pyrolysis of C2H6 and C3H8 Under Engine-Relevant Conditions. Applications in Energy and Combustion Science 14 (2023) 100123. DOI: 10.1016/j.jaecs.2023.100123.`,
+`13|C. Grégoire, C.K. Westbrook, S.P. Cooper, M.A. Turner, S.A. Alturaifi, O. Mathieu, E.L. Petersen. Laminar Flame Speed, Ignition Delay Time, and CO Laser Absorption Measurements of a Gasoline-like Blend of Pentene Isomers. The Journal of Physical Chemistry A 127 (2023) 495. DOI: 10.1021/acs.jpca.2c05732.`,
+`12|C. Grégoire, S.P. Cooper, E.L. Petersen. Chemical kinetics investigation of toluene combustion in a shock tube using spectroscopic CO and H2O laser absorption. Fuel 332 (2023) 126234. DOI: 10.1016/j.fuel.2022.126234.`,
+`11|O. Mathieu, C. Grégoire, M. Khan-Ghauri, S.P. Cooper, E.L. Petersen. Experimental Study of the Formation of CO during Ethanol Pyrolysis and Dry Reforming with CO2. Applications in Energy and Combustion Science 11 (2022) 100076. DOI: 10.1016/j.jaecs.2022.100076.`,
+`10|C. Grégoire, C.K. Westbrook, O. Mathieu, S.P. Cooper, S.A. Alturaifi, E.L. Petersen. A Shock-Tube and Chemical Kinetics Model Investigation Encompassing all Five Pentene Isomers. Fuel 323 (2022) 124223. DOI: 10.1016/j.fuel.2022.124223.`,
+`9|O. Mathieu, C. Grégoire, M.A. Turner, D.J. Mohr, S.A. Alturaifi, J.C. Thomas, E.L. Petersen. Experimental Investigation of the Combustion Properties of a Representative Thermal Runaway Gas from Li-Ion Batteries. Energy & Fuels 36 (2022) 3247. DOI: 10.1021/acs.energyfuels.1c04057.`,
+`8|C. Grégoire, C.K. Westbrook, G. Kukkadapu, S.P. Cooper, S.A. Alturaifi, O. Mathieu, E.L. Petersen. Shock-Tube Spectroscopic CO and H2O Measurements during 2-Methyl-1-Butene Combustion and Chemical Kinetics Modeling. Combustion and Flame 238 (2022) 111919. DOI: 10.1016/j.combustflame.2021.111919.`,
+`7|S.P. Cooper, C. Grégoire, D.J. Mohr, O. Mathieu, S.A. Alturaifi, E.L. Petersen. An Experimental Kinetics Study of Isopropanol Pyrolysis and Oxidation behind Reflected Shock Waves. Energies 14 (2021) 6808. DOI: 10.3390/en14206808.`,
+`6|S. Dong, C. Aul, C. Grégoire, S.P. Cooper, O. Mathieu, E.L. Petersen, J. Rodriguez, F. Mauss, S.W. Wagnon, G. Kukkadapu, W.J. Pitz, H.J. Curran. A comprehensive experimental and kinetic modeling study of 1-hexene. Combustion and Flame 232 (2021) 111516. DOI: 10.1016/j.combustflame.2021.111516.`,
+`5|C. Grégoire, C.K. Westbrook, S.A. Alturaifi, O. Mathieu, E.L. Petersen. Shock-tube spectroscopic water measurements and detailed kinetics modeling of 1-pentene and 3-methyl-1-butene. International Journal of Chemical Kinetics 53 (2021) 67. DOI: 10.1002/kin.21426.`,
+`4|Y. He, Y. Wang, C. Grégoire, U. Niedzielska, R. Mével, Z. Wang, J.E. Shepherd. Ignition characteristics of dual-fuel methane-n-hexane-oxygen-diluent mixtures in a rapid compression machine and a shock tube. Fuel 249 (2019) 379. DOI: 10.1016/j.fuel.2019.03.105.`,
+`3|C. Grégoire, M. Ponga. Nanovoid failure in Magnesium under dynamic loads. Acta Materialia 134 (2017) 360-374. DOI: 10.1016/j.actamat.2017.05.016.`,
+`2|J. Bugler, B. Marks, O. Mathieu, R. Archuleta, A. Camou, C. Grégoire, K.A. Heufer, E.L. Petersen, H.J. Curran. An ignition delay time and chemical kinetic modeling study of the pentane isomers. Combustion and Flame 163 (2016) 138. DOI: 10.1016/j.combustflame.2015.09.014.`,
+`1|O. Mathieu, C. Keesee, C. Grégoire, E.L. Petersen. Experimental and Chemical Kinetics Study of the Effects of Halon 1211 (CF2BrCl) on the Laminar Flame Speed and Ignition of Light Hydrocarbons. The Journal of Physical Chemistry A 119 (2015) 7611. DOI: 10.1021/acs.jpca.5b00959.`
+];
+
+const conference = [
+`43|O. Mathieu, M. Khan-Ghauri, A. Karan, C. Grégoire, G. Dayma, C. Chauveau, F. Halter, E.L. Petersen. NH2* and NH* Chemiluminescence during NH3 Oxidation in a Shock Tube. Turbo Expo ASME (2026) GT2026-175895.`,
+`42|C. Grégoire, E.L. Petersen. Shock-Tube Spectroscopic CO Measurements and Kinetics Modeling of Rocket Propellants. AIAA SciTech 2026 Forum (2026) AIAA 2026-1811. DOI: 10.2514/6.2026-1811.`,
+`41|M. Abulail, C. Grégoire, O. Mathieu, E.L. Petersen. Laser Absorption Measurements of Key Species During Ammonia Oxidation in a Shock Tube. AIAA SciTech 2026 Forum (2026) AIAA 2026-1620. DOI: 10.2514/6.2026-1620.`,
+`40|C. Grégoire, D.J. Mohr, P. Diévart, L. Catoire, E.L. Petersen, O. Mathieu. Bis-(2,2,2-TriFluoroEthyl) Methyl Phosphonate as Flame-Retardant for Safer Lithium-Ion Batteries. International Conference on Fluid Dynamics (2025).`,
+`39|C. Grégoire, E.L. Petersen. Laser Absorption Measurements of H35Cl in a Shock Tube for Investigating the Chemical Kinetics of Rocket Propellants. 30th International Colloquium on the Dynamics of Explosions and Reactive Systems (2025).`,
+`38|C. Grégoire, O. Clément, O. Mathieu, E.L. Petersen, M. Di Teodoro, S.N. Elliot, C. Cavallotti, Z. Serinyel, G. Dayma. An experimental and modeling study of the pyrolysis and oxidation of propan-1-ol using CO time-history measurements behind reflected shock waves. 30th International Colloquium on the Dynamics of Explosions and Reactive Systems (2025).`,
+`37|M. Khan-Ghauri, C. Grégoire, Z. Serinyel, O. Clément, G. Dayma, M. Di Teodoro, S.N. Elliot, C. Cavallotti, O. Mathieu, E.L. Petersen. Experimental CO Time-History Study of the Pyrolysis of Pentan-1-ol, Neopentanol and 2-Methyl-butan-1-ol in a Shock Tube. 30th International Colloquium on the Dynamics of Explosions and Reactive Systems (2025).`,
+`36|K. Kanayama, C. Grégoire, K. Maruta, E.L. Petersen, O. Mathieu, H. Nakamura. CO Time-History Measurements and Kinetic Modeling of Trimethyl Phosphate Pyrolysis. 30th International Colloquium on the Dynamics of Explosions and Reactive Systems (2025).`,
+`35|O. Mathieu, M. Abulail, C. Grégoire, A. Mousse-Rayaleh, A. Palomino, N. Chaumeix, H. Hashemi, P. Glarborg, E.L. Petersen. Experimental and Modeling Study of NH3/C2H4 Combustion. 30th International Colloquium on the Dynamics of Explosions and Reactive Systems (2025).`,
+`34|O. Mathieu, A. Bhattacharya, C. Grégoire, E.L. Petersen. N2O Laser Absorption Measurements During Toluene/N2O Combustion. 30th International Colloquium on the Dynamics of Explosions and Reactive Systems (2025).`,
+`33|M. Abulail, C. Grégoire, O. Mathieu, E.L. Petersen. High-Temperature Absorption Coefficient Measurement of NH2 at 597 nm. 30th International Colloquium on the Dynamics of Explosions and Reactive Systems (2025).`,
+`32|M. Abulail, C. Grégoire, O. Mathieu, E.L. Petersen. High-Temperature Measurements of NH2 and NH3 for Resolving Ammonia Kinetics. Turbo Expo ASME (2025) GT2025-152983.`,
+`31|M. di Teodoro, C. Cavallotti, C. Grégoire, O. Mathieu, E.L. Petersen, H.Q. Do, B. Lefort, Z. Serinyel, G. Dayma. An experimental, theoretical and modeling study of the pyrolysis and oxidation of neopentanol using CO time-history measurements behind reflected shock waves. 13th International Conference on Chemical Kinetics (2025).`,
+`30|C. Grégoire, E.L. Petersen. Shock-Tube Spectroscopic H35Cl Measurements and Modeling of Chlorinated Hydrocarbons. 12th European Combustion Meeting (2025).`,
+`29|C. Grégoire, O. Clément, O. Mathieu, E.L. Petersen, M. Di Teodoro, S. Elliott, C. Cavallotti, Z. Serinyel, G. Dayma. An experimental and modeling study of the pyrolysis and oxidation of propan-1-ol using CO time history measurements behind reflected shock waves. 12th European Combustion Meeting (2025).`,
+`28|S. Elliott, M. Di Teodoro, S. Vari, L.P. Maffei, Z. Serinyel, O. Clément, C. Grégoire, E.L. Petersen, O. Mathieu, G. Dayma, C. Cavallotti. A theoretical study of 1-propanol H-abstractions and successive reactivity. 12th European Combustion Meeting (2025).`,
+`27|C. Grégoire, E.L. Petersen. Shock-Tube and Modeling Study of Trichloromethane Pyrolysis and Trichloromethane/Methane Oxidation using a H35Cl Laser Absorption Diagnostic near 3.3 μm. 14th U.S. National Combustion Meeting (2025).`,
+`26|M. Khan-Ghauri, C. Grégoire, Z. Serinyel, O. Clément, G. Dayma, M. Di Teodoro, S.N. Elliot, C. Cavallotti, O. Mathieu, E.L. Petersen. Experimental CO Time-History Study of Propan-1-ol and Butan-1-ol for Use in Biofuels. 14th U.S. National Combustion Meeting (2025).`,
+`25|O. Mathieu, G. Dayma, Z. Serinyel, O. Clément, M. Di Teodoro, S.N. Elliot, C. Cavallotti, C. Grégoire, E.L. Petersen. An Experimental and Detailed Chemical Kinetic Modeling Study of 1-Propanol Combustion. 14th U.S. National Combustion Meeting (2025).`,
+`24|M. Abulail, C. Grégoire, O. Mathieu, E.L. Petersen. Measurement of the High-Temperature NH2 Absorption Coefficient at 597 nm in a Shock Tube. 14th U.S. National Combustion Meeting (2025).`,
+`23|C. Grégoire, E.L. Petersen. Laser Absorption Measurements of HCl in a Shock Tube for Investigating the Chemical Kinetics of Rocket Propellants. AIAA SciTech 2025 Forum (2025) AIAA 2025-1381. DOI: 10.2514/6.2025-1381.`,
+`22|Matthew Abulail, C. Grégoire, O. Mathieu, E.L. Petersen. Shock-Tube Measurements of NH2 for Ammonia Kinetics. AIAA SciTech 2025 Forum (2025) AIAA 2025-1767. DOI: 10.2514/6.2025-1767.`,
+`21|M. Khan-Ghauri, C. Grégoire, K. Kanayama, P. Diévart, S. Takahashi, T. Tezuka, H. Nakamura, L. Catoire, K. Maruta, E.L. Petersen, O. Mathieu. Experimental and Detailed Kinetics Modeling Study of Bis(2,2,2-trifluoroethyl) Carbonate, a Fire Suppressant for Lithium-Ion Batteries. International Conference on Fluid Dynamics (2024).`,
+`20|O. Mathieu, C. Grégoire, E.L. Petersen. Using CO Laser-Absorption Measurements to Assess C2H4 Detailed Kinetics Mechanisms During Combustion: A Shock-Tube Study. International Conference on Fluid Dynamics (2024).`,
+`19|C. Grégoire, Y.M. Almarzooq, M. Khan-Ghauri, P. Diévart, L. Catoire, E.L. Petersen, O. Mathieu. Chemical Kinetic Study of the Flame-Retardant Effect of Bis(2,2,2-trifluoroethyl) Carbonate on Ethyl Methyl Carbonate Combustion. 2024 Spring Technical Meeting Central of the Central States Section of The Combustion Institute (2024).`,
+`18|M. Khan-Ghauri, C. Grégoire, K. Kanayama, P. Diévart, S. Takahashi, T. Tezuka, H. Nakamura, L. Catoire, K. Maruta, E.L. Petersen, O. Mathieu. Experimental and Detailed Kinetics Modeling Study of Bis(2,2,2-trifluoroethyl) Carbonate, a Fire Suppressant for Lithium-Ion Batteries. 2024 Spring Technical Meeting Central of the Central States Section of The Combustion Institute (2024).`,
+`17|C. Grégoire, R. Matsumoto, K. Kanayama, T. Tezuka, M. Izumi, H. Nakamura, K. Maruta, E.L. Petersen, O. Mathieu. Experimental and Kinetics Modeling Study of Tri-Methyl-Phosphate Pyrolysis: Toward P-Containing Fire Suppressants for Lithium-Ion Battery Electrolytes. International Conference on Fluid Dynamics (2023).`,
+`16|O. Mathieu, C. Grégoire, E.L. Petersen. Ammonia oxidation by N2O: a shock tube study. International Conference on Fluid Dynamics (2023).`,
+`15|C. Grégoire, K. Kanayama, H. Nakamura, K. Maruta, E.L. Petersen, O. Mathieu. Shock-Tube CO Measurements during the Combustion of Ethylene Carbonate, a Battery Electrolyte Component. 29th International Colloquium on the Dynamics of Explosions and Reactive Systems (2023).`,
+`14|S. Cooper, C. Grégoire, Y. Almarzooq, E.L. Petersen, O. Mathieu. Experimental Investigation on Diethyl Carbonate Combustion. 29th International Colloquium on the Dynamics of Explosions and Reactive Systems (2023).`,
+`13|C. Grégoire, M. Sandberg, O. Mathieu, E.L. Petersen. Shock Tube Chemiluminescence and Spectroscopic CO Measurements of Norbornadiene. 34th International Symposium on Shock Waves (2023). DOI: 10.1007/978-981-96-4767-5_9.`,
+`12|A. Karan, M. Khan-Ghauri, C. Grégoire, O. Mathieu, E.L. Petersen, G. Dayma, C. Chauveau, F. Halter. Detailed study of NH2* chemiluminescence in ammonia combustion. 2nd Symposium on Ammonia Energy (2023).`,
+`11|C. Grégoire, E.L. Petersen, O. Mathieu. Shock-Tube CO Measurements during Ethyl Methyl Carbonate Combustion, a Battery Electrolyte. 13th U.S. National Combustion Meeting (2023).`,
+`10|M.G. Sandberg, C. Grégoire, D.J. Mohr, E.L. Petersen. The Effect of 2,5-Norbornadiene on the Ignition of Hydrogen and Methane Behind Reflected Shock Waves. 13th U.S. National Combustion Meeting (2023).`,
+`9|A. Karan, M. Khan-Ghauri, C. Grégoire, O. Mathieu, E.L. Petersen, G. Dayma, C. Chauveau, F. Halter. Experimental and detailed kinetics modelling study of NH2* chemiluminescence during ammonia combustion. 13th U.S. National Combustion Meeting (2023).`,
+`8|C. Grégoire, K. Kanayama, P. Diévart, S. Takahashi, T. Tezuka, H. Nakamura, L. Catoire, K. Maruta, E.L. Petersen, O. Mathieu. Experimental Study of Di(2,2,2-trifluoroethyl) Carbonate Oxidation in Shock Tube and Micro-Flow Reactor with a Controlled Temperature Profile. International Conference on Fluid Dynamics (2022).`,
+`7|M. Khan-Ghauri, C. Grégoire, O. Mathieu, E.L. Petersen. NH2* and NH* Chemiluminescence During NH3 Oxidation in Shock Tube. International Conference on Fluid Dynamics (2022).`,
+`6|C. Grégoire, C.K. Westbrook, O. Mathieu, S. Cooper, S.A. Alturaifi, E.L. Petersen. Simultaneous CO and H2O Laser Absorption Measurements of Pentene Isomers in a Shock Tube. 28th International Colloquium on the Dynamics of Explosions and Reactive Systems (2022).`,
+`5|C. Grégoire, C.K. Westbrook, S.P. Cooper, M.A. Turner, S.A. Alturaifi, O. Mathieu, E.L. Petersen. Laminar Flame Speed, Ignition Delay Time, and CO Laser Absorption Measurements of a Gasoline-Like Blend of Pentenes. 2022 Spring Technical Meeting Central of the Central States Section of The Combustion Institute (2022).`,
+`4|C. Grégoire, C.K. Westbrook, G. Kukkadapu, S.P. Cooper, S.A. Alturaifi, O. Mathieu, E.L. Petersen. Shock-Tube Spectroscopic CO and H2O Measurements during 2-Methyl-1-Butene Combustion and Chemical Kinetics Modeling. 12th U.S. National Combustion Meeting (2021).`,
+`3|S.P. Cooper, C. Grégoire, O. Mathieu, S.A. Alturaifi, E.L. Petersen. An Experimental Kinetics Study of Isopropanol Pyrolysis and Oxidation behind Reflected Shock Waves. 12th U.S. National Combustion Meeting (2021).`,
+`2|C. Grégoire, O. Mathieu, E.L. Petersen. Shock-tube water time-histories for pentene isomers: 1-pentene and 3-methyl-1-butene. 2020 Spring Technical Meeting Central of the Central States Section of The Combustion Institute (2020).`,
+`1|O. Mathieu, C. Grégoire, E.L. Petersen. Shock-tube study of the addition effect of CF2BrCl on the ignition of light hydrocarbons. Proceedings of the 25th International Colloquium on the Dynamics of Explosions and Reactive Systems (2015).`
+];
+
+// Format author name, venue, year, and DOI.
+const venues = [
+"Proceedings of the Combustion Institute",
+"International Journal of Chemical Kinetics",
+"Combustion and Flame",
+"AIAA Journal",
+"Progress in Energy and Combustion Science",
+"Applications in Energy and Combustion Science",
+"Application in Energy and Combustion Science",
+"The Journal of Physical Chemistry A",
+"International Conference on Fluid Dynamics",
+"30th International Colloquium on the Dynamics of Explosions and Reactive Systems",
+"29th International Colloquium on the Dynamics of Explosions and Reactive Systems",
+"28th International Colloquium on the Dynamics of Explosions and Reactive Systems",
+"Proceedings of the 25th International Colloquium on the Dynamics of Explosions and Reactive Systems",
+"2024 Spring Technical Meeting Central of the Central States Section of The Combustion Institute",
+"2022 Spring Technical Meeting Central of the Central States Section of The Combustion Institute",
+"13th U.S. National Combustion Meeting",
+"14th U.S. National Combustion Meeting",
+"12th U.S. National Combustion Meeting",
+"12th European Combustion Meeting",
+"34th International Symposium on Shock Waves",
+"13th International Conference on Chemical Kinetics",
+"2nd Symposium on Ammonia Energy",
+"Turbo Expo ASME",
+"AIAA SciTech 2026 Forum",
+"AIAA SciTech 2025 Forum",
+"Fuel",
+"Batteries",
+"Applied Physics B",
+"Energy & Fuels",
+"Energies",
+"Acta Materialia"
+];
+
+function escapeHTML(text) {
+    return text.replace(/[&<>"']/g, function(char) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;"
+        }[char];
+    });
+}
+
+function formatCitation(text) {
+    let result = escapeHTML(text);
+
+    // Bold C. Grégoire, wherever it appears in the author list.
+    result = result.replace(/C\.\s*Grégoire/g,
+        "<strong>C. Grégoire</strong>");
+
+    // Bold publication year.
+    result = result.replace(/\((20\d{2})\)/g,
+        "(<strong>$1</strong>)");
+
+    // Italicize venue names, longest first.
+    venues.slice().sort((a,b) => b.length - a.length)
+        .forEach(function(venue) {
+            const safeVenue = escapeHTML(venue);
+            result = result.replaceAll(safeVenue,
+                "<em>" + safeVenue + "</em>");
+        });
+
+    // Make DOI links clickable.
+    result = result.replace(
+        /DOI:\s*(10\.[^\s<]+)/g,
+        function(match, doi) {
+            return 'DOI: <a href="https://doi.org/' + doi +
+                '" target="_blank" rel="noopener noreferrer">' +
+                'https://doi.org/' + doi + '</a>';
+        }
+    );
+
+    return result;
+}
+
+function renderPublications(entries, listId) {
+    const list = document.getElementById(listId);
+
+    entries.forEach(function(entry) {
+        const separator = entry.indexOf("|");
+        const number = entry.slice(0, separator);
+        const citation = entry.slice(separator + 1);
+
+        const item = document.createElement("li");
+        item.className = "publication-entry";
+        item.innerHTML =
+            '<span class="entry-number">' + number + '.</span> ' +
+            formatCitation(citation);
+
+        list.appendChild(item);
+    });
+}
+
+renderPublications(journal, "journal-list");
+renderPublications(conference, "conference-list");
+
+// Independent Read More / Read Less buttons.
+document.querySelectorAll(".read-toggle").forEach(function(button) {
+    button.addEventListener("click", function() {
+        const list = document.getElementById(button.dataset.list);
+        const expanded = list.classList.toggle("expanded");
+
+        button.textContent = expanded ? "Read Less" : "Read More";
+        button.setAttribute("aria-expanded", String(expanded));
+    });
+});
+</script>
+
+</body>
+</html>
